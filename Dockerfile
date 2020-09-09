@@ -19,4 +19,7 @@ COPY . /usr/src/nodejs/
 
 EXPOSE 30010
 
-CMD npm run dev
+# 定义变量，构建可通过--build-arg 在docker build传递给构造器 ARG node_env
+ARG node_env 
+ENV NODE_ENV=$node_env
+CMD npm run ${NODE_ENV}
